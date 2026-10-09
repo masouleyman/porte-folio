@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahamat Youssouf Souleyman | Portfolio Data Science & Statistique</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1a2333;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #0284c7;
+            --border: #334155;
+            --font-main: 'Inter', sans-serif;
+            --font-code: 'Fira Code', monospace;
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-card: #f1f5f9;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --accent: #0284c7;
+            --accent-hover: #0369a1;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        [data-theme="light"] nav {
+            background: rgba(248, 250, 252, 0.85);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 5%;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-family: var(--font-code);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: #fff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Section Commons */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .project-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-subtitle {
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .project-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .project-desc ul {
+            padding-left: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .project-desc li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* Timeline / Experience & Education */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: var(--border);
+            top: 0;
+            bottom: 0;
+            left: 20px;
+        }
+
+        .timeline-item {
+            padding: 0 0 2.5rem 50px;
+            position: relative;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            left: 13px;
+            top: 0;
+            background: var(--bg-primary);
+            border: 3px solid var(--accent);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Contact & Footer */
+        .contact-container {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            padding: 0.8rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+        }
+
+        .contact-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1.2rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Mahamat Youssouf <span>S.</span></div>
+        <ul class="nav-links">
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#skills">Compétences</a></li>
+            <li><a href="#projects">Projets</a></li>
+            <li><a href="#experience">Parcours</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="hero-content">
+            <h1>Mahamat Youssouf Souleyman</h1>
+            <div class="hero-subtitle">
+                <span id="typewriter"></span>
+            </div>
+            <p>
+                Déterminé, rigoureux et autonome, je possède de solides compétences en analyse de données, 
+                modélisation statistique et apprentissage automatique. Actuellement en recherche d'un stage de fin d'études 
+                de Master 2 (4 à 6 mois) en tant que Data Analyst ou Data Scientist.
+            </p>
+            <div class="btn-container">
+                <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Me contacter</a>
+                <a href="#projects" class="btn btn-secondary"><i class="fas fa-code"></i> Voir les projets</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Compétences Techniques</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3><i class="fas fa-laptop-code"></i> Langages & Frameworks</h3>
+                <div class="skill-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">R</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">C++</span>
+                    <span class="tag">Matlab</span>
+                    <span class="tag">LaTeX</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3><i class="fas fa-brain"></i> Data Science & Machine Learning</h3>
+                <div class="skill-tags">
+                    <span class="tag">PyTorch</span>
+                    <span class="tag">Scikit-learn</span>
+                    <span class="tag">Pandas</span>
+                    <span class="tag">NumPy</span>
+                    <span class="tag">XGBoost</span>
+                    <span class="tag">GAN / TCN</span>
+                    <span class="tag">Optimisation Convexe</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3><i class="fas fa-chart-pie"></i> Visualisation & Outils</h3>
+                <div class="skill-tags">
+                    <span class="tag">Power BI</span>
+                    <span class="tag">Power Query</span>
+                    <span class="tag">Matplotlib</span>
+                    <span class="tag">Seaborn</span>
+                    <span class="tag">Geopandas</span>
+                    <span class="tag">Folium</span>
+                    <span class="tag">Git / GitHub</span>
+                    <span class="tag">Excel Avancé</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3><i class="fas fa-square-root-variable"></i> Expertise Statistique</h3>
+                <div class="skill-tags">
+                    <span class="tag">Modèles Mixtes</span>
+                    <span class="tag">Analyse de Survie</span>
+                    <span class="tag">Chaînes de Markov (MCMC)</span>
+                    <span class="tag">Séries Temporelles</span>
+                    <span class="tag">Martingales</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Projets Récents</h2>
+        <div class="projects-grid">
+            
+            <!-- Projet 1 -->
+            <div class="project-card">
+                <div class="project-body">
+                    <h3 class="project-title">Défi IA 2025 : Détection d'eau et de nuages</h3>
+                    <div class="project-subtitle">Spectres Exoplanétaires (Challenge Kaggle)</div>
+                    <div class="project-desc">
+                        <ul>
+                            <li>Identification de signatures atmosphériques (eau, nuages) via analyse spectrale.</li>
+                            <li>Prétraitement avancé : normalisation mean/L2, transformations (FFT, dérivées).</li>
+                            <li>Modélisation Gradient Boosting & XGBoost pour classification multi-cible.</li>
+                            <li>Optimisation du F1-score via validation croisée K-Fold.</li>
+                        </ul>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">XGBoost</span>
+                        <span class="tag">FFT</span>
+                        <span class="tag">Scikit-Learn</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet 2 -->
+            <div class="project-card">
+                <div class="project-body">
+                    <h3 class="project-title">Génération de Données Financières (Quant-GAN)</h3>
+                    <div class="project-subtitle">Semaine NUMERICS - Université de Bordeaux</div>
+                    <div class="project-desc">
+                        <ul>
+                            <li>Modélisation des séries temporelles (S&P 500) via Réseaux Antagonistes Génératifs.</li>
+                            <li>Implémentation d'un générateur TCN (Temporal Convolutional Network).</li>
+                            <li>Transformations de Lambert W pour la gestion des queues épaisses.</li>
+                            <li>Évaluation par comparaison avec Black-Scholes, GARCH et ARMA.</li>
+                        </ul>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">GANs</span>
+                        <span class="tag">TCN</span>
+                        <span class="tag">Finance Quantitative</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet 3 -->
+            <div class="project-card">
+                <div class="project-body">
+                    <h3 class="project-title">Analyse & Optimisation Énergétique</h3>
+                    <div class="project-subtitle">Aéroport de Bordeaux Mérignac (Stage 5 mois)</div>
+                    <div class="project-desc">
+                        <ul>
+                            <li>Nettoyage et structuration de données multi-sources (électricité, gaz, eau).</li>
+                            <li>Modélisation et suivi des écarts réel vs prévisionnel pour l'optimisation budget.</li>
+                            <li>Création de tableaux de bord interactifs et KPI automatisés sur Power BI.</li>
+                        </ul>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="tag">Power BI</span>
+                        <span class="tag">Power Query</span>
+                        <span class="tag">Excel Avancé</span>
+                        <span class="tag">KPIs</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Experience & Education Section -->
+    <section id="experience">
+        <h2 class="section-title">Parcours & Formations</h2>
+        <div class="timeline">
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2024 - 2026 (En cours)</div>
+                    <h3>Master Mathématiques Appliquées et Statistiques</h3>
+                    <p><em>Parcours Modélisation Statistique et Stochastique — Université de Bordeaux</em></p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2025 (5 mois)</div>
+                    <h3>Stage Data Analyst / Énergie</h3>
+                    <p><em>Aéroport de Bordeaux-Mérignac</em></p>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem;">
+                        Analyse de données énergétiques, modélisation budgétaire, automatisation et conception de tableaux de bord Power BI.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2023 - 2024</div>
+                    <h3>Master 1 Mathématiques et Applications</h3>
+                    <p><em>Parcours Analyse, Modélisation et Simulation — Université Paris-Saclay</em></p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2019 - 2023</div>
+                    <h3>Licence Mathématiques</h3>
+                    <p><em>Parcours Ingénierie Mathématique — Université de Bordeaux</em></p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Me Contacter</h2>
+        <div class="contact-container">
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                Actuellement disponible pour un stage de fin d'études Master 2 (4 à 6 mois) en Data Science ou Data Analysis. N'hésitez pas à me contacter !
+            </p>
+            <div class="contact-links">
+                <a href="mailto:kamnisouleyman15@gmail.com" class="contact-btn">
+                    <i class="fas fa-envelope"></i> kamnisouleyman15@gmail.com
+                </a>
+                <a href="tel:+33636179609" class="contact-btn">
+                    <i class="fas fa-phone"></i> +33 6 36 17 96 09
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Mahamat Youssouf Souleyman. Tous droits réservés.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            htmlElement.setAttribute('data-theme', newTheme);
+            
+            themeToggleBtn.innerHTML = newTheme === 'dark' 
+                ? '<i class="fas fa-moon"></i>' 
+                : '<i class="fas fa-sun"></i>';
+        });
+
+        // Typewriter Effect
+        const words = ["Ingénieur Statisticien", "Data Scientist", "Data Analyst"];
+        let i = 0;
+        let timer;
+
+        function typingEffect() {
+            let word = words[i].split("");
+            var loopTyping = function() {
+                if (word.length > 0) {
+                    document.getElementById('typewriter').innerHTML += word.shift();
+                } else {
+                    setTimeout(deletingEffect, 2000);
+                    return false;
+                }
+                timer = setTimeout(loopTyping, 100);
+            };
+            loopTyping();
+        }
+
+        function deletingEffect() {
+            let word = words[i].split("");
+            var loopDeleting = function() {
+                if (word.length > 0) {
+                    word.pop();
+                    document.getElementById('typewriter').innerHTML = word.join("");
+                } else {
+                    if (words.length > (i + 1)) {
+                        i++;
+                    } else {
+                        i = 0;
+                    }
+                    typingEffect();
+                    return false;
+                }
+                timer = setTimeout(loopDeleting, 50);
+            };
+            loopDeleting();
+        }
+
+        typingEffect();
+    </script>
+</body>
+</html>
