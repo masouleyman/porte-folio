@@ -119,41 +119,85 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0 5%;
-            text-align: center;
-            background: radial-gradient(circle at center, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+            padding: 6.5rem 5% 2.5rem;
+            background: radial-gradient(circle at 18% 45%, rgba(56, 189, 248, 0.12) 0%, transparent 48%);
         }
 
         .hero-content {
-            max-width: 900px;
+            max-width: 1120px;
+            width: 100%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(340px, 0.9fr);
+            align-items: center;
+            gap: 4rem;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: clamp(2.3rem, 4vw, 3.5rem);
+            line-height: 1.12;
+            margin-bottom: 0.8rem;
         }
 
         .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
             font-family: var(--font-code);
         }
 
         .hero p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-secondary);
-            margin-bottom: 2rem;
-            max-width: 750px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-bottom: 1.5rem;
+            max-width: 600px;
         }
 
         .btn-container {
             display: flex;
             gap: 1rem;
-            justify-content: center;
             flex-wrap: wrap;
+        }
+
+        .section-shortcuts {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .section-shortcut {
+            min-height: 145px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            color: var(--text-primary);
+            box-shadow: 0 12px 30px rgba(2, 8, 23, 0.12);
+        }
+
+        .section-shortcut:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            color: var(--text-primary);
+        }
+
+        .section-shortcut i {
+            color: var(--accent);
+            font-size: 1.35rem;
+        }
+
+        .section-shortcut span {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .section-shortcut h2 {
+            font-size: 1.1rem;
+            margin-top: 0.25rem;
         }
 
         .btn {
@@ -429,9 +473,28 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .hero {
+                min-height: 100svh;
+                padding: 6rem 5% 2rem;
+            }
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
             .hero h1 { font-size: 2.2rem; }
-            .hero-subtitle { font-size: 1.2rem; }
+            .hero-subtitle { font-size: 1.05rem; margin-bottom: 0.6rem; }
+            .hero p { font-size: 0.95rem; margin-bottom: 1rem; }
             .nav-links { display: none; }
+            .section-shortcuts { gap: 0.75rem; }
+            .section-shortcut { min-height: 112px; padding: 0.9rem; gap: 0.5rem; }
+            .section-shortcut h2 { font-size: 0.98rem; }
+            .section-shortcut span { font-size: 0.78rem; }
+        }
+
+        @media (max-width: 380px) {
+            .hero h1 { font-size: 1.9rem; }
+            .section-shortcut { min-height: 105px; padding: 0.75rem; }
+            .section-shortcut h2 { font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -442,10 +505,10 @@
         <div class="logo">Mahamat Youssouf <span>S.</span></div>
         <ul class="nav-links">
             <li><a href="#about">À propos</a></li>
-            <li><a href="#skills">Compétences</a></li>
-            <li><a href="#projects">Projets</a></li>
             <li><a href="#experience">Parcours</a></li>
             <li><a href="#cv">CV</a></li>
+            <li><a href="#skills">Compétences</a></li>
+            <li><a href="#projects">Projets</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
@@ -456,18 +519,36 @@
     <!-- Hero Section -->
     <section class="hero" id="about">
         <div class="hero-content">
-            <h1>Mahamat Youssouf Souleyman</h1>
-            <div class="hero-subtitle">
-                <span id="typewriter"></span>
+            <div class="hero-intro">
+                <h1>Mahamat Youssouf Souleyman</h1>
+                <div class="hero-subtitle">
+                    <span id="typewriter"></span>
+                </div>
+                <p>
+                    Étudiant en Master 2 de mathématiques appliquées et statistiques, je recherche un stage de fin d'études en Data Science ou Data Analysis.
+                </p>
+                <div class="btn-container">
+                    <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Me contacter</a>
+                </div>
             </div>
-            <p>
-                Déterminé, rigoureux et autonome, je possède de solides compétences en analyse de données, 
-                modélisation statistique et apprentissage automatique. Actuellement en recherche d'un stage de fin d'études 
-                de Master 2 (4 à 6 mois) en tant que Data Analyst ou Data Scientist.
-            </p>
-            <div class="btn-container">
-                <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Me contacter</a>
-                <a href="#projects" class="btn btn-secondary"><i class="fas fa-code"></i> Voir les projets</a>
+
+            <div class="section-shortcuts" aria-label="Découvrir les sections du portfolio">
+                <a class="section-shortcut" href="#experience">
+                    <i class="fas fa-briefcase" aria-hidden="true"></i>
+                    <div><span>Mon parcours</span><h2>Expériences</h2></div>
+                </a>
+                <a class="section-shortcut" href="#cv">
+                    <i class="fas fa-file-lines" aria-hidden="true"></i>
+                    <div><span>À télécharger</span><h2>CV</h2></div>
+                </a>
+                <a class="section-shortcut" href="#skills">
+                    <i class="fas fa-laptop-code" aria-hidden="true"></i>
+                    <div><span>Ce que je maîtrise</span><h2>Compétences</h2></div>
+                </a>
+                <a class="section-shortcut" href="#projects">
+                    <i class="fas fa-diagram-project" aria-hidden="true"></i>
+                    <div><span>Mes réalisations</span><h2>Projets</h2></div>
+                </a>
             </div>
         </div>
     </section>
