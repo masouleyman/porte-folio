@@ -311,6 +311,10 @@
             margin-bottom: 0.4rem;
         }
 
+        .project-links {
+            margin-top: 1.5rem;
+        }
+
         /* Timeline / Experience & Education */
         .timeline {
             position: relative;
@@ -358,6 +362,30 @@
             color: var(--accent);
             font-weight: 600;
             margin-bottom: 0.3rem;
+        }
+
+        .cv-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cv-preview {
+            width: 100%;
+            height: 700px;
+            margin-top: 2rem;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--bg-card);
+        }
+
+        .sections-error {
+            margin: 2rem 5%;
+            padding: 1rem;
+            border: 1px solid #ef4444;
+            border-radius: 8px;
+            color: var(--text-primary);
+            background: var(--bg-card);
         }
 
         /* Contact & Footer */
@@ -417,6 +445,7 @@
             <li><a href="#skills">Compétences</a></li>
             <li><a href="#projects">Projets</a></li>
             <li><a href="#experience">Parcours</a></li>
+            <li><a href="#cv">CV</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
@@ -443,174 +472,13 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <h2 class="section-title">Compétences Techniques</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <h3><i class="fas fa-laptop-code"></i> Langages & Frameworks</h3>
-                <div class="skill-tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">R</span>
-                    <span class="tag">SQL</span>
-                    <span class="tag">C++</span>
-                    <span class="tag">Matlab</span>
-                    <span class="tag">LaTeX</span>
-                </div>
-            </div>
-            <div class="skill-card">
-                <h3><i class="fas fa-brain"></i> Data Science & Machine Learning</h3>
-                <div class="skill-tags">
-                    <span class="tag">PyTorch</span>
-                    <span class="tag">Scikit-learn</span>
-                    <span class="tag">Pandas</span>
-                    <span class="tag">NumPy</span>
-                    <span class="tag">XGBoost</span>
-                    <span class="tag">GAN / TCN</span>
-                    <span class="tag">Optimisation Convexe</span>
-                </div>
-            </div>
-            <div class="skill-card">
-                <h3><i class="fas fa-chart-pie"></i> Visualisation & Outils</h3>
-                <div class="skill-tags">
-                    <span class="tag">Power BI</span>
-                    <span class="tag">Power Query</span>
-                    <span class="tag">Matplotlib</span>
-                    <span class="tag">Seaborn</span>
-                    <span class="tag">Geopandas</span>
-                    <span class="tag">Folium</span>
-                    <span class="tag">Git / GitHub</span>
-                    <span class="tag">Excel Avancé</span>
-                </div>
-            </div>
-            <div class="skill-card">
-                <h3><i class="fas fa-square-root-variable"></i> Expertise Statistique</h3>
-                <div class="skill-tags">
-                    <span class="tag">Modèles Mixtes</span>
-                    <span class="tag">Analyse de Survie</span>
-                    <span class="tag">Chaînes de Markov (MCMC)</span>
-                    <span class="tag">Séries Temporelles</span>
-                    <span class="tag">Martingales</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2 class="section-title">Projets Récents</h2>
-        <div class="projects-grid">
-            
-            <!-- Projet 1 -->
-            <div class="project-card">
-                <div class="project-body">
-                    <h3 class="project-title">Défi IA 2025 : Détection d'eau et de nuages</h3>
-                    <div class="project-subtitle">Spectres Exoplanétaires (Challenge Kaggle)</div>
-                    <div class="project-desc">
-                        <ul>
-                            <li>Identification de signatures atmosphériques (eau, nuages) via analyse spectrale.</li>
-                            <li>Prétraitement avancé : normalisation mean/L2, transformations (FFT, dérivées).</li>
-                            <li>Modélisation Gradient Boosting & XGBoost pour classification multi-cible.</li>
-                            <li>Optimisation du F1-score via validation croisée K-Fold.</li>
-                        </ul>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">XGBoost</span>
-                        <span class="tag">FFT</span>
-                        <span class="tag">Scikit-Learn</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Projet 2 -->
-            <div class="project-card">
-                <div class="project-body">
-                    <h3 class="project-title">Génération de Données Financières (Quant-GAN)</h3>
-                    <div class="project-subtitle">Semaine NUMERICS - Université de Bordeaux</div>
-                    <div class="project-desc">
-                        <ul>
-                            <li>Modélisation des séries temporelles (S&P 500) via Réseaux Antagonistes Génératifs.</li>
-                            <li>Implémentation d'un générateur TCN (Temporal Convolutional Network).</li>
-                            <li>Transformations de Lambert W pour la gestion des queues épaisses.</li>
-                            <li>Évaluation par comparaison avec Black-Scholes, GARCH et ARMA.</li>
-                        </ul>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">GANs</span>
-                        <span class="tag">TCN</span>
-                        <span class="tag">Finance Quantitative</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Projet 3 -->
-            <div class="project-card">
-                <div class="project-body">
-                    <h3 class="project-title">Analyse & Optimisation Énergétique</h3>
-                    <div class="project-subtitle">Aéroport de Bordeaux Mérignac (Stage 5 mois)</div>
-                    <div class="project-desc">
-                        <ul>
-                            <li>Nettoyage et structuration de données multi-sources (électricité, gaz, eau).</li>
-                            <li>Modélisation et suivi des écarts réel vs prévisionnel pour l'optimisation budget.</li>
-                            <li>Création de tableaux de bord interactifs et KPI automatisés sur Power BI.</li>
-                        </ul>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="tag">Power BI</span>
-                        <span class="tag">Power Query</span>
-                        <span class="tag">Excel Avancé</span>
-                        <span class="tag">KPIs</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Experience & Education Section -->
-    <section id="experience">
-        <h2 class="section-title">Parcours & Formations</h2>
-        <div class="timeline">
-            
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <div class="timeline-date">2024 - 2026 (En cours)</div>
-                    <h3>Master Mathématiques Appliquées et Statistiques</h3>
-                    <p><em>Parcours Modélisation Statistique et Stochastique — Université de Bordeaux</em></p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <div class="timeline-date">2025 (5 mois)</div>
-                    <h3>Stage Data Analyst / Énergie</h3>
-                    <p><em>Aéroport de Bordeaux-Mérignac</em></p>
-                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem;">
-                        Analyse de données énergétiques, modélisation budgétaire, automatisation et conception de tableaux de bord Power BI.
-                    </p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <div class="timeline-date">2023 - 2024</div>
-                    <h3>Master 1 Mathématiques et Applications</h3>
-                    <p><em>Parcours Analyse, Modélisation et Simulation — Université Paris-Saclay</em></p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <div class="timeline-date">2019 - 2023</div>
-                    <h3>Licence Mathématiques</h3>
-                    <p><em>Parcours Ingénierie Mathématique — Université de Bordeaux</em></p>
-                </div>
-            </div>
-
-        </div>
-    </section>
+    <div id="skills-section"></div>
+    <div id="projects-section"></div>
+    <div id="experience-section"></div>
+    <div id="cv-section"></div>
+    <p id="sections-error" class="sections-error" role="alert" hidden>
+        Une erreur est survenue lors du chargement des sections du portfolio. Vérifiez que les fichiers HTML sont présents et ouvrez le site avec un serveur local.
+    </p>
 
     <!-- Contact Section -->
     <section id="contact">
@@ -637,6 +505,29 @@
 
     <!-- JavaScript -->
     <script>
+        const sections = [
+            { id: 'skills-section', file: 'competences.html' },
+            { id: 'projects-section', file: 'projets.html' },
+            { id: 'experience-section', file: 'experiences.html' },
+            { id: 'cv-section', file: 'cv.html' }
+        ];
+
+        async function loadSections() {
+            await Promise.all(sections.map(async ({ id, file }) => {
+                const response = await fetch(file);
+                if (!response.ok) {
+                    throw new Error(`Impossible de charger ${file} : ${response.status}`);
+                }
+
+                document.getElementById(id).innerHTML = await response.text();
+            }));
+        }
+
+        loadSections().catch(error => {
+            console.error('Erreur lors du chargement des sections du portfolio.', error);
+            document.getElementById('sections-error').hidden = false;
+        });
+
         // Theme Toggle Logic
         const themeToggleBtn = document.getElementById('themeToggle');
         const htmlElement = document.documentElement;
