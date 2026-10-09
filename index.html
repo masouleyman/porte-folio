@@ -1,572 +1,480 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="dark">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | Mahamat Youssouf Souleyman</title>
-    <!-- Font Awesome -->
+    <title>Mahamat Youssouf SOULEYMAN | Portfolio</title>
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-card: #1a2333;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --accent: #38bdf8;
-            --accent-hover: #0284c7;
-            --border: #334155;
-            --sidebar-width: 260px;
-            --font-main: 'Inter', sans-serif;
-            --transition: all 0.25s ease;
-        }
-
-        [data-theme="light"] {
-            --bg-primary: #f1f5f9;
-            --bg-secondary: #ffffff;
-            --bg-card: #ffffff;
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --accent: #0284c7;
-            --accent-hover: #0369a1;
-            --border: #e2e8f0;
+            --bg-gradient: radial-gradient(circle at 50% -20%, #1e1b4b 0%, #090d16 60%, #030712 100%);
+            --card-bg: rgba(17, 24, 39, 0.6);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --card-hover-border: rgba(56, 189, 248, 0.4);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-blue: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: var(--font-main);
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            display: flex;
+            font-family: var(--font-family);
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
             min-height: 100vh;
-            overflow-x: hidden;
+            line-height: 1.6;
+            padding-bottom: 5rem;
         }
 
-        /* Sidebar Dashboard */
-        aside {
-            width: var(--sidebar-width);
-            background-color: var(--bg-secondary);
-            border-right: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 100;
-            transition: var(--transition);
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
         }
 
-        .profile-card {
-            padding: 2rem 1.5rem 1.5rem;
+        /* Hero Section */
+        .hero {
+            padding-top: 4rem;
+            padding-bottom: 3rem;
             text-align: center;
-            border-bottom: 1px solid var(--border);
         }
 
-        .profile-avatar {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent), #6366f1);
-            display: flex;
+        .availability-badge {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.8rem;
-            color: #fff;
-            font-weight: 700;
-        }
-
-        .profile-card h2 {
-            font-size: 1.05rem;
-            font-weight: 700;
-        }
-
-        .profile-card p {
-            font-size: 0.8rem;
-            color: var(--accent);
-            margin-top: 0.2rem;
+            gap: 0.6rem;
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--accent-blue);
             font-weight: 500;
-        }
-
-        .sidebar-menu {
-            list-style: none;
-            padding: 1rem 0;
-            flex-grow: 1;
-            overflow-y: auto;
-        }
-
-        .sidebar-menu li a {
-            display: flex;
-            align-items: center;
-            gap: 0.85rem;
-            padding: 0.85rem 1.5rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.92rem;
-            transition: var(--transition);
-            border-left: 3px solid transparent;
-        }
-
-        .sidebar-menu li a:hover,
-        .sidebar-menu li a.active {
-            color: var(--accent);
-            background-color: rgba(56, 189, 248, 0.08);
-            border-left-color: var(--accent);
-        }
-
-        .sidebar-footer {
-            padding: 1rem 1.5rem;
-            border-top: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .theme-toggle {
-            background: none;
-            border: 1px solid var(--border);
-            color: var(--text-primary);
-            padding: 0.5rem 0.8rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        /* Main Content */
-        main {
-            margin-left: var(--sidebar-width);
-            flex-grow: 1;
-            padding: 2.5rem 3rem;
-            max-width: 1200px;
-            width: calc(100% - var(--sidebar-width));
-        }
-
-        .dashboard-section {
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .dashboard-section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(6px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .page-header {
             margin-bottom: 2rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 1rem;
+            backdrop-filter: blur(10px);
         }
 
-        .page-header h1 {
-            font-size: 1.8rem;
-            color: var(--text-primary);
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-blue);
+            animation: pulse 2s infinite;
         }
 
-        .page-header p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(56, 189, 248, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
         }
 
-        /* Cards & Grid */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            color: var(--accent-blue);
+        }
+
+        .hero-description {
+            max-width: 680px;
+            margin: 0 auto 2rem;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            font-weight: 400;
+        }
+
+        .hero-description strong {
+            color: #cbd5e1;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
             gap: 1.5rem;
+            margin-bottom: 3.5rem;
         }
 
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+        .social-icon {
+            color: var(--text-muted);
+            font-size: 1.3rem;
+            transition: all 0.2s ease;
+            text-decoration: none;
         }
 
-        .card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: var(--transition);
-        }
-
-        .card:hover {
-            border-color: var(--accent);
+        .social-icon:hover {
+            color: var(--accent-blue);
             transform: translateY(-2px);
         }
 
-        .card-header {
+        /* Dashboard Grid Shortcuts */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 5rem;
+        }
+
+        .dashboard-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-main);
+            backdrop-filter: blur(12px);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .dashboard-card i {
+            font-size: 1.8rem;
+            color: var(--accent-blue);
+            transition: transform 0.25s ease;
+        }
+
+        .dashboard-card span {
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .dashboard-card:hover {
+            border-color: var(--card-hover-border);
+            background: rgba(30, 41, 59, 0.7);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3), 0 0 20px var(--accent-glow);
+        }
+
+        .dashboard-card:hover i {
+            transform: scale(1.1);
+        }
+
+        /* Section Commons */
+        .section {
+            padding-top: 4rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-header i {
+            color: var(--accent-blue);
+            font-size: 1.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        /* Cards Layout */
+        .cards-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .content-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.75rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .content-card-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
-        .card-title {
-            font-size: 1.15rem;
+        .content-card h3 {
+            font-size: 1.2rem;
             font-weight: 600;
         }
 
-        .card-subtitle {
-            font-size: 0.85rem;
-            color: var(--accent);
+        .date-badge {
+            font-size: 0.8rem;
+            color: var(--accent-blue);
+            background: rgba(56, 189, 248, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
             font-weight: 500;
         }
 
-        .badge {
-            display: inline-block;
-            padding: 0.25rem 0.6rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            background-color: rgba(56, 189, 248, 0.15);
-            color: var(--accent);
+        .institution {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
         }
 
-        /* Buttons & Links */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            font-size: 0.88rem;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
+        .details-list {
+            list-style: none;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            margin-bottom: 1.25rem;
         }
 
-        .btn-primary {
-            background-color: var(--accent);
-            color: #fff;
+        .details-list li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.4rem;
         }
 
-        .btn-primary:hover {
-            background-color: var(--accent-hover);
+        .details-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
         }
 
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text-primary);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        /* Tags */
-        .tag-group {
+        .tag-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.4rem;
+            gap: 0.5rem;
             margin-top: 1rem;
         }
 
         .tag {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            padding: 0.25rem 0.65rem;
-            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
             font-size: 0.8rem;
-            color: var(--text-secondary);
+            padding: 0.3rem 0.75rem;
+            border-radius: 8px;
         }
 
-        /* Timeline */
-        .timeline {
-            border-left: 2px solid var(--border);
-            padding-left: 1.5rem;
-            margin-left: 0.5rem;
+        /* Buttons & Actions */
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: var(--accent-blue);
+            padding: 0.6rem 1.2rem;
+            border-radius: 10px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            margin-top: 0.5rem;
         }
 
-        .timeline-item {
-            position: relative;
-            margin-bottom: 2rem;
+        .btn-action:hover {
+            background: var(--accent-blue);
+            color: #090d16;
+            transform: translateY(-2px);
         }
 
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -1.95rem;
-            top: 0.25rem;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: var(--accent);
-        }
-
-        /* PDF Viewer */
-        .pdf-frame {
+        /* PDF Viewer Frame */
+        .pdf-viewer {
             width: 100%;
             height: 650px;
-            border: 1px solid var(--border);
             border-radius: 12px;
-            background: var(--bg-card);
-            margin-top: 1rem;
+            border: 1px solid var(--card-border);
+            background: var(--card-bg);
+            margin-top: 1.5rem;
         }
 
-        /* Mobile Header */
-        .mobile-header {
-            display: none;
-            padding: 1rem;
-            background: var(--bg-secondary);
-            border-bottom: 1px solid var(--border);
-            justify-content: space-between;
-            align-items: center;
+        /* Responsive */
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .pdf-viewer {
+                height: 450px;
+            }
         }
 
-        @media (max-width: 900px) {
-            aside {
-                transform: translateX(-100%);
-            }
-
-            aside.open {
-                transform: translateX(0);
-            }
-
-            main {
-                margin-left: 0;
-                width: 100%;
-                padding: 1.5rem;
-            }
-
-            .mobile-header {
-                display: flex;
+        @media (max-width: 480px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Mobile -->
-    <div class="mobile-header">
-        <div style="font-weight: 700;">M. Youssouf S.</div>
-        <button id="menuToggle" class="btn btn-outline"><i class="fas fa-bars"></i> Menu</button>
-    </div>
-
-    <!-- Sidebar Dashboard -->
-    <aside id="sidebar">
-        <div class="profile-card">
-            <div class="profile-avatar">YS</div>
-            <h2>Mahamat Youssouf S.</h2>
-            <p>Data Scientist / Statisticien</p>
-        </div>
-
-        <ul class="sidebar-menu">
-            <li><a href="#overview" class="nav-link active" onclick="showSection('overview')"><i class="fas fa-chart-line"></i> Vue d'ensemble</a></li>
-            <li><a href="#experiences" class="nav-link" onclick="showSection('experiences')"><i class="fas fa-briefcase"></i> Expériences</a></li>
-            <li><a href="#projets-academiques" class="nav-link" onclick="showSection('projets-academiques')"><i class="fas fa-graduation-cap"></i> Projets Académiques</a></li>
-            <li><a href="#projets-perso" class="nav-link" onclick="showSection('projets-perso')"><i class="fas fa-diagram-project"></i> Projets Perso & Defis</a></li>
-            <li><a href="#competences" class="nav-link" onclick="showSection('competences')"><i class="fas fa-code"></i> Compétences</a></li>
-            <li><a href="#parcours" class="nav-link" onclick="showSection('parcours')"><i class="fas fa-university"></i> Parcours Académique</a></li>
-            <li><a href="#cv" class="nav-link" onclick="showSection('cv')"><i class="fas fa-file-pdf"></i> CV Officiel</a></li>
-            <li><a href="#contact" class="nav-link" onclick="showSection('contact')"><i class="fas fa-envelope"></i> Contact</a></li>
-        </ul>
-
-        <div class="sidebar-footer">
-            <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i> Thème</button>
-        </div>
-    </aside>
-
-    <!-- Content Area -->
-    <main>
-
-        <!-- SECTION: VUE D'ENSEMBLE -->
-        <section id="overview" class="dashboard-section active">
-            <div class="page-header">
-                <h1>Tableau de Bord</h1>
-                <p>Master 2 Modélisation Statistique & Stochastique — Recherche de stage (4 à 6 mois)</p>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="availability-badge">
+                <span class="status-dot"></span>
+                <span>Disponible pour stage de fin d'études</span>
             </div>
 
-            <div class="grid-2" style="margin-bottom: 2rem;">
-                <div class="card">
-                    <h3 style="margin-bottom: 0.5rem;"><i class="fas fa-user-check" style="color: var(--accent);"></i> Profil Synthétique</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.5;">
-                        Étudiant en Master 2 à l'Université de Bordeaux, je combine de solides compétences en <strong>modélisation statistique</strong>, <strong>Machine Learning</strong> (PyTorch, XGBoost) et <strong>analyse de données</strong> (Power BI, SQL, Python).
-                    </p>
-                    <div style="margin-top: 1rem;">
-                        <button onclick="showSection('cv')" class="btn btn-primary"><i class="fas fa-file-pdf"></i> Voir le CV PDF</button>
-                    </div>
-                </div>
+            <h1>Mahamat Youssouf <span>SOULEYMAN</span></h1>
 
-                <div class="card">
-                    <h3 style="margin-bottom: 0.5rem;"><i class="fas fa-bullseye" style="color: var(--accent);"></i> Recherche Actuelle</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.92rem;">
-                        <strong>Poste ciblé :</strong> Stage Data Scientist / Data Analyst<br>
-                        <strong>Durée :</strong> 4 à 6 mois (Disponible immédiatement)<br>
-                        <strong>Mobiles :</strong> France & International
-                    </p>
-                    <div class="tag-group" style="margin-top: 1rem;">
+            <p class="hero-description">
+                Étudiant en <strong>Master 2 Modélisation Statistique & Stochastique</strong> à l'Université de Bordeaux. 
+                Recherche un stage de fin d'études (4 à 6 mois) en <strong>Data Science</strong>, <strong>Data Analysis</strong> et <strong>Modélisation Statistique</strong>.
+            </p>
+
+            <div class="social-links">
+                <a href="mailto:kamnisouleyman15@gmail.com" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://linkedin.com" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com" target="_blank" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="tel:+33636179609" class="social-icon" title="Téléphone"><i class="fas fa-phone"></i></a>
+            </div>
+
+            <!-- Grille Dashboard (Boutons raccourcis) -->
+            <div class="dashboard-grid">
+                <a href="#cv" class="dashboard-card">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>MON CV</span>
+                </a>
+                <a href="#projets" class="dashboard-card">
+                    <i class="fas fa-code"></i>
+                    <span>PROJETS</span>
+                </a>
+                <a href="#competences" class="dashboard-card">
+                    <i class="fas fa-brain"></i>
+                    <span>SKILLS DATA</span>
+                </a>
+                <a href="#experiences" class="dashboard-card">
+                    <i class="fas fa-briefcase"></i>
+                    <span>EXPÉRIENCE</span>
+                </a>
+                <a href="#cursus" class="dashboard-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>CURSUS</span>
+                </a>
+                <a href="#contact" class="dashboard-card">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>CONTACT</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- SECTION: PROJETS -->
+        <section id="projets" class="section">
+            <div class="section-header">
+                <i class="fas fa-code"></i>
+                <h2>Projets & Réalisations</h2>
+            </div>
+            <div class="cards-list">
+                <!-- Projet Kaggle -->
+                <div class="content-card">
+                    <div class="content-card-header">
+                        <h3>Défi IA 2025 : Détection d'eau et de nuages (Exoplanètes)</h3>
+                        <span class="date-badge">Kaggle Challenge • 2026</span>
+                    </div>
+                    <ul class="details-list">
+                        <li>Identification de signatures atmosphériques (eau, nuages) sur des spectres exoplanétaires.</li>
+                        <li>Prétraitement des données (normalisation mean, L2) et comparaison de transformations (FFT, dérivées).</li>
+                        <li>Modélisation par Gradient Boosting et XGBoost pour une classification multi-cible.</li>
+                        <li>Optimisation du F1-score via validation croisée K-Fold.</li>
+                    </ul>
+                    <div class="tag-container">
                         <span class="tag">Python</span>
-                        <span class="tag">R</span>
-                        <span class="tag">Power BI</span>
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">SQL</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION: EXPÉRIENCES -->
-        <section id="experiences" class="dashboard-section">
-            <div class="page-header">
-                <h1>Expériences Professionnelles</h1>
-                <p>Stages et interventions en entreprise et enseignement</p>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="card">
-                        <div class="card-header">
-                            <div>
-                                <h3 class="card-title">Stage Data Analyst / Énergie</h3>
-                                <div class="card-subtitle">Aéroport de Bordeaux-Mérignac</div>
-                            </div>
-                            <span class="badge">2025 (5 mois)</span>
-                        </div>
-                        <ul style="color: var(--text-secondary); font-size: 0.9rem; padding-left: 1.2rem; margin-bottom: 1rem;">
-                            <li>Analyse et structuration de données énergétiques (électricité, gaz, eau) via Power Query.</li>
-                            <li>Modélisation et suivi des écarts budget réel vs prévisionnel.</li>
-                            <li>Création de tableaux de bord interactifs et automatisés sous Power BI.</li>
-                        </ul>
-                        <a href="experiences/Rapport_de_stage___A%C3%A9roport_de_bordeaux.pdf" target="_blank" class="btn btn-outline"><i class="fas fa-file-pdf"></i> Rapport de Stage PDF</a>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="card">
-                        <div class="card-header">
-                            <div>
-                                <h3 class="card-title">Intervenant Pédagogique</h3>
-                                <div class="card-subtitle">Complétude</div>
-                            </div>
-                            <span class="badge">2023 - 2025</span>
-                        </div>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem;">
-                            Soutien scolaire en mathématiques et sciences. Vulgarisation de concepts complexes et accompagnement méthodologique.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION: PROJETS ACADÉMIQUES -->
-        <section id="projets-academiques" class="dashboard-section">
-            <div class="page-header">
-                <h1>Projets Académiques & Recherche</h1>
-                <p>Travaux de modélisation et recherche appliquée</p>
-            </div>
-
-            <div class="grid-2">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Quant-GAN (Séries Temporelles Financières)</h3>
-                        <span class="badge">Université de Bordeaux</span>
-                    </div>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
-                        Génération de données financières synthétiques (S&P 500) via GANs et TCN (Temporal Convolutional Networks). Transformation de Lambert W et comparaison avec Black-Scholes et GARCH.
-                    </p>
-                    <div class="tag-group" style="margin-bottom: 1rem;">
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">GAN</span>
-                        <span class="tag">TCN</span>
-                    </div>
-                    <a href="projets/QuantGAN_diapos.pdf" target="_blank" class="btn btn-outline"><i class="fas fa-file-pdf"></i> Diaporama PDF</a>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Mélange de Cartes & Chaînes de Markov</h3>
-                        <span class="badge">Recherche</span>
-                    </div>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
-                        Étude probabiliste sur le temps de mélange des chaînes de Markov appliquées aux jeux de cartes.
-                    </p>
-                    <div class="tag-group" style="margin-bottom: 1rem;">
-                        <span class="tag">Probabilités</span>
-                        <span class="tag">MCMC</span>
-                    </div>
-                    <a href="projets/Quand_un_jeu_de_cartes_est_il_bien_m%C3%A9lang%C3%A9__%203.pdf" target="_blank" class="btn btn-outline"><i class="fas fa-file-pdf"></i> Document PDF</a>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Barycentres de Wasserstein</h3>
-                        <span class="badge">Synthèse d'article</span>
-                    </div>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
-                        Synthèse d'article scientifique sur le calcul rapide des barycentres en transport optimal.
-                    </p>
-                    <a href="projets/Synth%C3%A8se_article_Fast%20Computation%20of%20Wasserstein%20Barycenters.pdf" target="_blank" class="btn btn-outline"><i class="fas fa-file-pdf"></i> Synthèse PDF</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION: PROJETS PERSO & DEFIS -->
-        <section id="projets-perso" class="dashboard-section">
-            <div class="page-header">
-                <h1>Projets Personnels & Challenges</h1>
-                <p>Compétitions Kaggle et projets open data</p>
-            </div>
-
-            <div class="grid-2">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Défi IA 2025 : Spectres Exoplanétaires</h3>
-                        <span class="badge">Challenge Kaggle</span>
-                    </div>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
-                        Classification multi-cible pour la détection d'eau et de nuages. Utilisation de XGBoost, FFT et optimisation de F1-score via K-Fold cross-validation.
-                    </p>
-                    <div class="tag-group" style="margin-bottom: 1rem;">
                         <span class="tag">XGBoost</span>
                         <span class="tag">Scikit-Learn</span>
                         <span class="tag">FFT</span>
                     </div>
-                    <a href="projets/D%C3%A9fi_IA_Rapport_Dades%26Youssouf.pdf" target="_blank" class="btn btn-outline"><i class="fas fa-file-pdf"></i> Rapport PDF</a>
+                    <a href="projets/D%C3%A9fi_IA_Rapport_Dades%26Youssouf.pdf" target="_blank" class="btn-action">
+                        <i class="fas fa-file-pdf"></i> Ouvrir le Rapport PDF
+                    </a>
                 </div>
 
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Projet Données Ouvertes</h3>
-                        <span class="badge">Open Data</span>
+                <!-- Projet QuantGAN -->
+                <div class="content-card">
+                    <div class="content-card-header">
+                        <h3>Génération de Données Financières (Quant-GAN)</h3>
+                        <span class="date-badge">Université de Bordeaux • 2025-2026</span>
                     </div>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
-                        Traitement et visualisation de jeux de données publics pour l'extraction d'insights socio-économiques.
+                    <ul class="details-list">
+                        <li>Modélisation des séries temporelles financières (S&P 500) via Réseaux Antagonistes Génératifs.</li>
+                        <li>Implémentation d'un générateur TCN (Temporal Convolutional Networks) pour la mémoire temporelle.</li>
+                        <li>Transformations de Lambert W pour la gestion des distributions à queues épaisses.</li>
+                        <li>Évaluation par comparaison avec Black-Scholes, GARCH et ARMA.</li>
+                    </ul>
+                    <div class="tag-container">
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">GANs</span>
+                        <span class="tag">TCN</span>
+                        <span class="tag">Séries Temporelles</span>
+                    </div>
+                    <a href="projets/QuantGAN_diapos.pdf" target="_blank" class="btn-action">
+                        <i class="fas fa-file-pdf"></i> Ouvrir les Diapositives PDF
+                    </a>
+                </div>
+
+                <!-- Autres Projets -->
+                <div class="content-card">
+                    <div class="content-card-header">
+                        <h3>Autres Projets de Recherche et Données</h3>
+                        <span class="date-badge">Travaux Académiques</span>
+                    </div>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem;">
+                        Consultez mes autres travaux d'analyse et de recherche appliqués :
                     </p>
-                    <a href="projets/diapo_projet_donnees_ouvertes.pdf" target="_blank" class="btn btn-outline"><i class="fas fa-file-pdf"></i> Présentation PDF</a>
+                    <div class="tag-container" style="gap: 0.8rem;">
+                        <a href="projets/Quand_un_jeu_de_cartes_est_il_bien_m%C3%A9lang%C3%A9__%203.pdf" target="_blank" class="btn-action">
+                            <i class="fas fa-file-pdf"></i> Mélange de cartes & Chaînes de Markov
+                        </a>
+                        <a href="projets/Synth%C3%A8se_article_Fast%20Computation%20of%20Wasserstein%20Barycenters.pdf" target="_blank" class="btn-action">
+                            <i class="fas fa-file-pdf"></i> Barycentres de Wasserstein
+                        </a>
+                        <a href="projets/diapo_projet_donnees_ouvertes.pdf" target="_blank" class="btn-action">
+                            <i class="fas fa-file-pdf"></i> Projet Open Data
+                        </a>
+                        <a href="projets/Rapport_projet.pdf" target="_blank" class="btn-action">
+                            <i class="fas fa-file-pdf"></i> Rapport de Projet Statistique
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION: COMPÉTENCES -->
-        <section id="competences" class="dashboard-section">
-            <div class="page-header">
-                <h1>Compétences Techniques</h1>
-                <p>Savoir-faire et langages maîtrisés</p>
+        <!-- SECTION: SKILLS DATA -->
+        <section id="competences" class="section">
+            <div class="section-header">
+                <i class="fas fa-brain"></i>
+                <h2>Compétences & Expertise</h2>
             </div>
-
-            <div class="grid-3">
-                <div class="card">
-                    <h3 style="color: var(--accent); margin-bottom: 1rem;"><i class="fas fa-code"></i> Langages</h3>
-                    <div class="tag-group">
+            <div class="cards-list" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); display: grid;">
+                <div class="content-card">
+                    <h3 style="color: var(--accent-blue); margin-bottom: 1rem;">Logiciels & Langages</h3>
+                    <div class="tag-container">
                         <span class="tag">Python</span>
                         <span class="tag">R</span>
                         <span class="tag">SQL</span>
@@ -575,145 +483,143 @@
                         <span class="tag">LaTeX</span>
                     </div>
                 </div>
-
-                <div class="card">
-                    <h3 style="color: var(--accent); margin-bottom: 1rem;"><i class="fas fa-brain"></i> Data Science</h3>
-                    <div class="tag-group">
+                <div class="content-card">
+                    <h3 style="color: var(--accent-blue); margin-bottom: 1rem;">Data Science & ML</h3>
+                    <div class="tag-container">
                         <span class="tag">PyTorch</span>
                         <span class="tag">Scikit-Learn</span>
                         <span class="tag">Pandas</span>
                         <span class="tag">NumPy</span>
                         <span class="tag">XGBoost</span>
+                        <span class="tag">GANs</span>
                     </div>
                 </div>
-
-                <div class="card">
-                    <h3 style="color: var(--accent); margin-bottom: 1rem;"><i class="fas fa-chart-pie"></i> Visualisation</h3>
-                    <div class="tag-group">
+                <div class="content-card">
+                    <h3 style="color: var(--accent-blue); margin-bottom: 1rem;">Reporting & Dataviz</h3>
+                    <div class="tag-container">
                         <span class="tag">Power BI</span>
                         <span class="tag">Power Query</span>
                         <span class="tag">Matplotlib</span>
                         <span class="tag">Seaborn</span>
                         <span class="tag">Geopandas</span>
+                        <span class="tag">Excel Avancé</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION: PARCOURS ACADÉMIQUE -->
-        <section id="parcours" class="dashboard-section">
-            <div class="page-header">
-                <h1>Parcours Académique</h1>
-                <p>Diplômes et diplômes universitaires</p>
+        <!-- SECTION: EXPÉRIENCE -->
+        <section id="experiences" class="section">
+            <div class="section-header">
+                <i class="fas fa-briefcase"></i>
+                <h2>Expérience Professionnelle</h2>
             </div>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="card">
-                        <span class="badge">2024 - 2026</span>
-                        <h3 style="margin-top: 0.5rem;">Master Mathématiques Appliquées et Statistiques</h3>
-                        <p style="color: var(--accent);">Université de Bordeaux</p>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">
-                            Parcours Modélisation Statistique et Stochastique.
-                        </p>
+            <div class="cards-list">
+                <div class="content-card">
+                    <div class="content-card-header">
+                        <h3>Stage Data Analyst / Énergie</h3>
+                        <span class="date-badge">2025 (5 mois)</span>
                     </div>
+                    <div class="institution">Aéroport de Bordeaux-Mérignac</div>
+                    <ul class="details-list">
+                        <li>Analyse et traitement de données énergétiques (électricité, gaz, eau) sous Power Query et Excel avancé.</li>
+                        <li>Modélisation, prévision budgétaire et suivi des écarts (réel vs prévisionnel).</li>
+                        <li>Création de tableaux de bord interactifs et KPI automatisés sous Power BI.</li>
+                    </ul>
+                    <a href="experiences/Rapport_de_stage___A%C3%A9roport_de_bordeaux.pdf" target="_blank" class="btn-action">
+                        <i class="fas fa-file-pdf"></i> Ouvrir le Rapport de Stage PDF
+                    </a>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="card">
-                        <span class="badge">2023 - 2024</span>
-                        <h3 style="margin-top: 0.5rem;">Master 1 Mathématiques et Applications</h3>
-                        <p style="color: var(--accent);">Université Paris-Saclay</p>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">
-                            Parcours Analyse, Modélisation et Simulation.
-                        </p>
+                <div class="content-card">
+                    <div class="content-card-header">
+                        <h3>Intervenant Pédagogique</h3>
+                        <span class="date-badge">2023 - 2025</span>
                     </div>
+                    <div class="institution">Complétude</div>
+                    <p style="color: var(--text-muted); font-size: 0.92rem;">
+                        Soutien scolaire, aide aux devoirs et conseils d'orientation. Vulgarisation de concepts scientifiques complexes.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: CURSUS -->
+        <section id="cursus" class="section">
+            <div class="section-header">
+                <i class="fas fa-graduation-cap"></i>
+                <h2>Cursus Académique</h2>
+            </div>
+            <div class="cards-list">
+                <div class="content-card">
+                    <div class="content-card-header">
+                        <h3>Master Mathématiques Appliquées et Statistiques</h3>
+                        <span class="date-badge">2024 - 2026</span>
+                    </div>
+                    <div class="institution">Université de Bordeaux</div>
+                    <p style="color: var(--text-muted); font-size: 0.92rem;">Parcours Modélisation Statistique et Stochastique (M1 & M2)</p>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="card">
-                        <span class="badge">2019 - 2023</span>
-                        <h3 style="margin-top: 0.5rem;">Licence Mathématiques</h3>
-                        <p style="color: var(--accent);">Université de Bordeaux</p>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">
-                            Parcours Ingénierie Mathématique.
-                        </p>
+                <div class="content-card">
+                    <div class="content-card-header">
+                        <h3>Master 1 Mathématiques et Applications</h3>
+                        <span class="date-badge">2023 - 2024</span>
                     </div>
+                    <div class="institution">Université Paris Saclay</div>
+                    <p style="color: var(--text-muted); font-size: 0.92rem;">Parcours Analyse, Modélisation et Simulation</p>
+                </div>
+
+                <div class="content-card">
+                    <div class="content-card-header">
+                        <h3>Licence Mathématiques</h3>
+                        <span class="date-badge">2019 - 2023</span>
+                    </div>
+                    <div class="institution">Université de Bordeaux</div>
+                    <p style="color: var(--text-muted); font-size: 0.92rem;">Parcours Ingénierie Mathématique</p>
                 </div>
             </div>
         </section>
 
         <!-- SECTION: CV -->
-        <section id="cv" class="dashboard-section">
-            <div class="page-header">
-                <h1>Curriculum Vitae</h1>
-                <p>Aperçu et téléchargement de mon CV</p>
+        <section id="cv" class="section">
+            <div class="section-header">
+                <i class="fas fa-file-pdf"></i>
+                <h2>Mon CV Officiel</h2>
             </div>
-
-            <div style="margin-bottom: 1rem;">
-                <a href="CV/CV%20Souleyman-09-2026.pdf" target="_blank" class="btn btn-primary"><i class="fas fa-download"></i> Télécharger le PDF</a>
+            <div class="content-card">
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                    Vous pouvez consulter mon CV ci-dessous ou le télécharger directement au format PDF.
+                </p>
+                <a href="CV/CV%20Souleyman-09-2026.pdf" target="_blank" class="btn-action">
+                    <i class="fas fa-download"></i> Télécharger mon CV (PDF)
+                </a>
+                <iframe class="pdf-viewer" src="CV/CV%20Souleyman-09-2026.pdf" title="CV Mahamat Youssouf Souleyman"></iframe>
             </div>
-
-            <iframe class="pdf-frame" src="CV/CV%20Souleyman-09-2026.pdf" title="CV Mahamat Youssouf Souleyman"></iframe>
         </section>
 
         <!-- SECTION: CONTACT -->
-        <section id="contact" class="dashboard-section">
-            <div class="page-header">
-                <h1>Me Contacter</h1>
-                <p>Restons en contact pour toute opportunité</p>
+        <section id="contact" class="section">
+            <div class="section-header">
+                <i class="fas fa-paper-plane"></i>
+                <h2>Contact</h2>
             </div>
-
-            <div class="grid-2">
-                <div class="card" style="text-align: center;">
-                    <i class="fas fa-envelope" style="font-size: 2rem; color: var(--accent); margin-bottom: 1rem;"></i>
-                    <h3>Email</h3>
-                    <p style="margin-top: 0.5rem;"><a href="mailto:kamnisouleyman15@gmail.com" style="color: var(--text-primary);">kamnisouleyman15@gmail.com</a></p>
-                </div>
-
-                <div class="card" style="text-align: center;">
-                    <i class="fas fa-phone" style="font-size: 2rem; color: var(--accent); margin-bottom: 1rem;"></i>
-                    <h3>Téléphone</h3>
-                    <p style="margin-top: 0.5rem;"><a href="tel:+33636179609" style="color: var(--text-primary);">+33 6 36 17 96 09</a></p>
+            <div class="content-card" style="text-align: center; padding: 3rem 1.5rem;">
+                <h3 style="margin-bottom: 1rem;">Travaillons ensemble !</h3>
+                <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto 2rem;">
+                    Disponible dès maintenant pour un stage de fin d'études Master 2 (4 à 6 mois).
+                </p>
+                <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                    <a href="mailto:kamnisouleyman15@gmail.com" class="btn-action">
+                        <i class="fas fa-envelope"></i> kamnisouleyman15@gmail.com
+                    </a>
+                    <a href="tel:+33636179609" class="btn-action">
+                        <i class="fas fa-phone"></i> +33 6 36 17 96 09
+                    </a>
                 </div>
             </div>
         </section>
 
-    </main>
+    </div>
 
-    <!-- JavaScript -->
-    <script>
-        // Navigation SPA entre les sections
-        function showSection(sectionId) {
-            document.querySelectorAll('.dashboard-section').forEach(sec => sec.classList.remove('active'));
-            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-
-            const targetSection = document.getElementById(sectionId);
-            if (targetSection) {
-                targetSection.classList.add('active');
-            }
-
-            const activeLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
-            }
-
-            // Fermer la sidebar sur mobile après le clic
-            document.getElementById('sidebar').classList.remove('open');
-        }
-
-        // Toggle Sidebar Mobile
-        document.getElementById('menuToggle').addEventListener('click', () => {
-            document.getElementById('sidebar').classList.toggle('open');
-        });
-
-        // Theme Toggle (Dark / Light)
-        const themeToggleBtn = document.getElementById('themeToggle');
-        themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', newTheme);
-        });
-    </script>
 </body>
 </html>
