@@ -292,10 +292,18 @@
         .tag {
             background: var(--bg-secondary);
             border: 1px solid var(--border);
-            padding: 0.3rem 0.8rem;
+            padding: 0.4rem 0.9rem;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             color: var(--text-secondary);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        a.tag:hover {
+            border-color: var(--accent);
+            color: var(--accent);
         }
 
         /* Projects */
@@ -423,15 +431,6 @@
             background: var(--bg-card);
         }
 
-        .sections-error {
-            margin: 2rem 5%;
-            padding: 1rem;
-            border: 1px solid #ef4444;
-            border-radius: 8px;
-            color: var(--text-primary);
-            background: var(--bg-card);
-        }
-
         /* Contact & Footer */
         .contact-container {
             text-align: center;
@@ -444,6 +443,7 @@
             justify-content: center;
             gap: 2rem;
             margin-top: 2rem;
+            flex-wrap: wrap;
         }
 
         .contact-btn {
@@ -489,12 +489,7 @@
             .section-shortcut { min-height: 112px; padding: 0.9rem; gap: 0.5rem; }
             .section-shortcut h2 { font-size: 0.98rem; }
             .section-shortcut span { font-size: 0.78rem; }
-        }
-
-        @media (max-width: 380px) {
-            .hero h1 { font-size: 1.9rem; }
-            .section-shortcut { min-height: 105px; padding: 0.75rem; }
-            .section-shortcut h2 { font-size: 0.9rem; }
+            .cv-preview { height: 450px; }
         }
     </style>
 </head>
@@ -511,7 +506,7 @@
             <li><a href="#projects">Projets</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+        <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">
             <i class="fas fa-moon"></i>
         </button>
     </nav>
@@ -525,48 +520,256 @@
                     <span id="typewriter"></span>
                 </div>
                 <p>
-                    Étudiant en Master 2 de mathématiques appliquées et statistiques, je recherche un stage de fin d'études en Data Science ou Data Analysis.
+                    Ingénieur Statisticien et étudiant en Master 2 de mathématiques appliquées, spécialisé en modélisation, Machine Learning et analyse de données. Recherche activement un stage de fin d'études (4 à 6 mois).
                 </p>
                 <div class="btn-container">
                     <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Me contacter</a>
+                    <a href="#cv" class="btn btn-secondary"><i class="fas fa-file-pdf"></i> Consulter mon CV</a>
                 </div>
             </div>
 
-            <div class="section-shortcuts" aria-label="Découvrir les sections du portfolio">
+            <div class="section-shortcuts" aria-label="Navigation rapide">
                 <a class="section-shortcut" href="#experience">
-                    <i class="fas fa-briefcase" aria-hidden="true"></i>
+                    <i class="fas fa-briefcase"></i>
                     <div><span>Mon parcours</span><h2>Expériences</h2></div>
                 </a>
                 <a class="section-shortcut" href="#cv">
-                    <i class="fas fa-file-lines" aria-hidden="true"></i>
-                    <div><span>À télécharger</span><h2>CV</h2></div>
+                    <i class="fas fa-file-lines"></i>
+                    <div><span>À télécharger</span><h2>Mon CV</h2></div>
                 </a>
                 <a class="section-shortcut" href="#skills">
-                    <i class="fas fa-laptop-code" aria-hidden="true"></i>
+                    <i class="fas fa-laptop-code"></i>
                     <div><span>Ce que je maîtrise</span><h2>Compétences</h2></div>
                 </a>
                 <a class="section-shortcut" href="#projects">
-                    <i class="fas fa-diagram-project" aria-hidden="true"></i>
-                    <div><span>Mes réalisations</span><h2>Projets</h2></div>
+                    <i class="fas fa-diagram-project"></i>
+                    <div><span>Mes travaux</span><h2>Projets</h2></div>
                 </a>
             </div>
         </div>
     </section>
 
-    <div id="skills-section"></div>
-    <div id="projects-section"></div>
-    <div id="experience-section"></div>
-    <div id="cv-section"></div>
-    <p id="sections-error" class="sections-error" role="alert" hidden>
-        Une erreur est survenue lors du chargement des sections du portfolio. Vérifiez que les fichiers HTML sont présents et ouvrez le site avec un serveur local.
-    </p>
+    <!-- Section Parcours & Formations -->
+    <section id="experience">
+        <h2 class="section-title">Parcours & Formations</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2024 - 2026 (En cours)</div>
+                    <h3>Master Mathématiques Appliquées et Statistiques</h3>
+                    <p><em>Parcours Modélisation Statistique et Stochastique — Université de Bordeaux</em></p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2025 (5 mois)</div>
+                    <h3>Stage Data Analyst / Énergie</h3>
+                    <p><em>Aéroport de Bordeaux-Mérignac</em></p>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem;">
+                        Analyse de données énergétiques, modélisation budgétaire, automatisation et création de tableaux de bord interactifs Power BI.
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        <a class="btn btn-secondary" href="experiences/Rapport_de_stage___A%C3%A9roport_de_bordeaux.pdf" target="_blank" rel="noopener">
+                            <i class="fas fa-file-pdf"></i> Télécharger le rapport de stage
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2023 - 2024</div>
+                    <h3>Master 1 Mathématiques et Applications</h3>
+                    <p><em>Parcours Analyse, Modélisation et Simulation — Université Paris-Saclay</em></p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2019 - 2023</div>
+                    <h3>Licence Mathématiques</h3>
+                    <p><em>Parcours Ingénierie Mathématique — Université de Bordeaux</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section CV -->
+    <section id="cv">
+        <h2 class="section-title">Mon Curriculum Vitae</h2>
+        <div class="cv-container">
+            <p style="color: var(--text-secondary);">Consultez directement mon CV ci-dessous ou téléchargez-le au format PDF.</p>
+            <a class="btn btn-primary" href="CV/CV%20Souleyman-09-2026.pdf" target="_blank" rel="noopener" style="margin-top: 1.5rem;">
+                <i class="fas fa-download"></i> Ouvrir / Télécharger mon CV
+            </a>
+            <iframe class="cv-preview" src="CV/CV%20Souleyman-09-2026.pdf" title="Aperçu du CV au format PDF"></iframe>
+        </div>
+    </section>
+
+    <!-- Section Compétences -->
+    <section id="skills">
+        <h2 class="section-title">Compétences Techniques</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3><i class="fas fa-laptop-code"></i> Langages & Logiciels</h3>
+                <div class="skill-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">R</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">C++</span>
+                    <span class="tag">Matlab</span>
+                    <span class="tag">LaTeX</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3><i class="fas fa-brain"></i> Data Science & Machine Learning</h3>
+                <div class="skill-tags">
+                    <span class="tag">PyTorch</span>
+                    <span class="tag">Scikit-learn</span>
+                    <span class="tag">Pandas</span>
+                    <span class="tag">NumPy</span>
+                    <span class="tag">XGBoost</span>
+                    <span class="tag">GAN / TCN</span>
+                    <span class="tag">Optimisation Convexe</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3><i class="fas fa-chart-pie"></i> Visualisation & Outils</h3>
+                <div class="skill-tags">
+                    <span class="tag">Power BI</span>
+                    <span class="tag">Power Query</span>
+                    <span class="tag">Matplotlib</span>
+                    <span class="tag">Seaborn</span>
+                    <span class="tag">Geopandas</span>
+                    <span class="tag">Folium</span>
+                    <span class="tag">Git / GitHub</span>
+                    <span class="tag">Excel Avancé</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3><i class="fas fa-square-root-variable"></i> Expertise Statistique</h3>
+                <div class="skill-tags">
+                    <span class="tag">Modèles Mixtes</span>
+                    <span class="tag">Analyse de Survie</span>
+                    <span class="tag">Chaînes de Markov (MCMC)</span>
+                    <span class="tag">Séries Temporelles</span>
+                    <span class="tag">Martingales</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Projets -->
+    <section id="projects">
+        <h2 class="section-title">Projets & Réalisations</h2>
+        <div class="projects-grid">
+            
+            <!-- Projet Kaggle -->
+            <div class="project-card">
+                <div class="project-body">
+                    <h3 class="project-title">Défi IA 2025 : Détection d'eau et de nuages</h3>
+                    <div class="project-subtitle">Spectres Exoplanétaires (Challenge Kaggle)</div>
+                    <div class="project-desc">
+                        <ul>
+                            <li>Identification de signatures atmosphériques (eau, nuages) via analyse spectrale.</li>
+                            <li>Prétraitement avancé : normalisation mean/L2, transformations (FFT, dérivées).</li>
+                            <li>Modélisation Gradient Boosting & XGBoost pour classification multi-cible.</li>
+                            <li>Optimisation du F1-score via validation croisée K-Fold.</li>
+                        </ul>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">XGBoost</span>
+                        <span class="tag">FFT</span>
+                        <span class="tag">Scikit-Learn</span>
+                    </div>
+                    <div class="project-links">
+                        <a class="btn btn-secondary" href="projets/D%C3%A9fi_IA_Rapport_Dades%26Youssouf.pdf" target="_blank" rel="noopener">
+                            <i class="fas fa-file-pdf"></i> Lire le rapport de projet
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet QuantGAN -->
+            <div class="project-card">
+                <div class="project-body">
+                    <h3 class="project-title">Génération de Données Financières (Quant-GAN)</h3>
+                    <div class="project-subtitle">Semaine NUMERICS - Université de Bordeaux</div>
+                    <div class="project-desc">
+                        <ul>
+                            <li>Modélisation des séries temporelles (S&P 500) via Réseaux Antagonistes Génératifs.</li>
+                            <li>Implémentation d'un générateur TCN (Temporal Convolutional Network).</li>
+                            <li>Transformations de Lambert W pour gérer les queues épaisses.</li>
+                            <li>Évaluation comparative avec Black-Scholes, GARCH et ARMA.</li>
+                        </ul>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">GANs</span>
+                        <span class="tag">TCN</span>
+                        <span class="tag">Finance Quantitative</span>
+                    </div>
+                    <div class="project-links">
+                        <a class="btn btn-secondary" href="projets/QuantGAN_diapos.pdf" target="_blank" rel="noopener">
+                            <i class="fas fa-file-pdf"></i> Voir la présentation PDF
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet Énergie Aéroport -->
+            <div class="project-card">
+                <div class="project-body">
+                    <h3 class="project-title">Analyse & Optimisation Énergétique</h3>
+                    <div class="project-subtitle">Aéroport de Bordeaux-Mérignac</div>
+                    <div class="project-desc">
+                        <ul>
+                            <li>Nettoyage et structuration de données multi-sources (électricité, gaz, eau).</li>
+                            <li>Modélisation et suivi des écarts réel vs prévisionnel pour l'optimisation budgétaire.</li>
+                            <li>Conception de tableaux de bord interactifs et automatisés sous Power BI.</li>
+                        </ul>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="tag">Power BI</span>
+                        <span class="tag">Power Query</span>
+                        <span class="tag">Excel Avancé</span>
+                    </div>
+                    <div class="project-links">
+                        <a class="btn btn-secondary" href="experiences/Rapport_de_stage___A%C3%A9roport_de_bordeaux.pdf" target="_blank" rel="noopener">
+                            <i class="fas fa-file-pdf"></i> Lire le rapport complet
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Autres documents -->
+        <h3 style="text-align: center; margin: 3.5rem 0 1.5rem;">Autres études et travaux de recherche</h3>
+        <div class="skill-tags" style="justify-content: center;">
+            <a class="tag" href="projets/Quand_un_jeu_de_cartes_est_il_bien_m%C3%A9lang%C3%A9__%203.pdf" target="_blank" rel="noopener">
+                <i class="fas fa-file-pdf"></i> Mélange de cartes & Probalités
+            </a>
+            <a class="tag" href="projets/Synth%C3%A8se_article_Fast%20Computation%20of%20Wasserstein%20Barycenters.pdf" target="_blank" rel="noopener">
+                <i class="fas fa-file-pdf"></i> Barycentres de Wasserstein
+            </a>
+            <a class="tag" href="projets/diapo_projet_donnees_ouvertes.pdf" target="_blank" rel="noopener">
+                <i class="fas fa-file-pdf"></i> Projet Données Ouvertes
+            </a>
+            <a class="tag" href="projets/Rapport_projet.pdf" target="_blank" rel="noopener">
+                <i class="fas fa-file-pdf"></i> Rapport de projet avancé
+            </a>
+        </div>
+    </section>
 
     <!-- Contact Section -->
     <section id="contact">
         <h2 class="section-title">Me Contacter</h2>
         <div class="contact-container">
             <p style="color: var(--text-secondary); margin-bottom: 2rem;">
-                Actuellement disponible pour un stage de fin d'études Master 2 (4 à 6 mois) en Data Science ou Data Analysis. N'hésitez pas à me contacter !
+                Actuellement à la recherche d'un stage de fin d'études de Master 2 (4 à 6 mois) en Data Science / Data Analysis. N'hésitez pas à me contacter !
             </p>
             <div class="contact-links">
                 <a href="mailto:kamnisouleyman15@gmail.com" class="contact-btn">
@@ -586,30 +789,7 @@
 
     <!-- JavaScript -->
     <script>
-        const sections = [
-            { id: 'skills-section', file: 'competences.html' },
-            { id: 'projects-section', file: 'projets.html' },
-            { id: 'experience-section', file: 'experiences.html' },
-            { id: 'cv-section', file: 'cv.html' }
-        ];
-
-        async function loadSections() {
-            await Promise.all(sections.map(async ({ id, file }) => {
-                const response = await fetch(file);
-                if (!response.ok) {
-                    throw new Error(`Impossible de charger ${file} : ${response.status}`);
-                }
-
-                document.getElementById(id).innerHTML = await response.text();
-            }));
-        }
-
-        loadSections().catch(error => {
-            console.error('Erreur lors du chargement des sections du portfolio.', error);
-            document.getElementById('sections-error').hidden = false;
-        });
-
-        // Theme Toggle Logic
+        // Gestion du Mode Sombre / Clair
         const themeToggleBtn = document.getElementById('themeToggle');
         const htmlElement = document.documentElement;
 
@@ -623,7 +803,7 @@
                 : '<i class="fas fa-sun"></i>';
         });
 
-        // Typewriter Effect
+        // Effet d'écriture automatique (Typewriter)
         const words = ["Ingénieur Statisticien", "Data Scientist", "Data Analyst"];
         let i = 0;
         let timer;
